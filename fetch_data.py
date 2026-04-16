@@ -160,7 +160,7 @@ def compute_delivery_pct(nse_df: pd.DataFrame, nse_delivery_today: dict) -> dict
     result = {}
     for idx, row in nse_df.iterrows():
         ds = idx.strftime("%Y-%m-%d")
-        if ds in nse_delivery_today:
+        if ds in nse_delivery_today and nse_delivery_today[ds] > 0:
             result[ds] = nse_delivery_today[ds]
         else:
             vol_ratio = row["Volume"] / avg_vol if avg_vol > 0 else 1
