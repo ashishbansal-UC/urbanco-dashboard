@@ -205,14 +205,29 @@ def compute_peer_performance(peers: dict) -> list:
                 continue
 
             df.index = df.index.tz_localize(None)
-            latest_close = df["Close"].iloc[-1]
-            row["price"] = round(latest_close, 2)
+            # Use last non-NaN close (today's may be NaN if market is open)
+            closes = df["Close"].dropna()
+            if closes.empty:
+                for k in periods:
+                    row[k] = None
+                row["price"] = None
+                row["mcap"] = None
+                results.append(row)
+                continue
+
+            latest_close = closes.iloc[-1]
+            row["price"] = round(float(latest_close), 1)
+
+            # Market cap in thousands of crores
+            info = t.info
+            mcap = info.get("marketCap", 0)
+            row["mcap"] = round(mcap / 1e11, 1) if mcap else None  # /1e11 = k Cr
 
             for label, trading_days in periods.items():
-                if len(df) > trading_days:
-                    old_close = df["Close"].iloc[-(trading_days + 1)]
+                if len(closes) > trading_days:
+                    old_close = closes.iloc[-(trading_days + 1)]
                     pct = ((latest_close - old_close) / old_close) * 100
-                    row[label] = round(pct, 2)
+                    row[label] = round(float(pct), 1)
                 else:
                     row[label] = None
         except Exception as e:
@@ -220,26 +235,48 @@ def compute_peer_performance(peers: dict) -> list:
             for k in periods:
                 row[k] = None
             row["price"] = None
+            row["mcap"] = None
 
         results.append(row)
 
     return results
 
 
-def detect_results_dates(nse_df: pd.DataFrame) -> list:
-    """Detect probable quarterly results dates from volume spikes."""
-    if nse_df.empty or len(nse_df) < 10:
-        return []
-
-    vol = nse_df["Volume"]
-    avg = vol.rolling(10, min_periods=5).mean()
+def fetch_results_dates(symbol: str) -> list:
+    """Fetch actual results/board meeting dates from NSE announcements."""
     dates = []
-
-    for i in range(5, len(nse_df)):
-        if avg.iloc[i] > 0 and vol.iloc[i] > avg.iloc[i] * 3:
-            ds = nse_df.index[i].strftime("%Y-%m-%d")
-            dates.append(ds)
-
+    try:
+        s = requests.Session()
+        s.headers.update({
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+            "Accept": "application/json",
+        })
+        s.get("https://www.nseindia.com", timeout=10)
+        url = (
+            f"https://www.nseindia.com/api/corporate-announcements"
+            f"?index=equities&symbol={symbol}"
+            f"&from_date=01-01-2025&to_date={datetime.now().strftime('%d-%m-%Y')}"
+        )
+        r = s.get(url, timeout=10)
+        if r.status_code == 200:
+            data = r.json()
+            seen = set()
+            for item in data:
+                desc = item.get("desc", "").lower()
+                if any(k in desc for k in ["outcome of board meeting", "financial result"]):
+                    # Parse date from "23-Jan-2026 16:55:05" format
+                    dt_str = item.get("an_dt", "")
+                    try:
+                        dt = datetime.strptime(dt_str.split()[0], "%d-%b-%Y")
+                        ds = dt.strftime("%Y-%m-%d")
+                        if ds not in seen:
+                            seen.add(ds)
+                            dates.append(ds)
+                    except ValueError:
+                        pass
+            dates.sort()
+    except Exception as e:
+        print(f"  Could not fetch results dates: {e}")
     return dates
 
 
@@ -272,9 +309,10 @@ def main():
     print("  Computing prices...")
     nse_prices = compute_prices(nse_df)
 
-    # Results dates (volume spike detection)
-    results_dates = detect_results_dates(nse_df)
-    print(f"  Detected {len(results_dates)} possible results/event dates")
+    # Results dates (from NSE board meeting announcements)
+    print("  Fetching results dates from NSE...")
+    results_dates = fetch_results_dates(NSE_SYMBOL)
+    print(f"  Found {len(results_dates)} results dates: {results_dates}")
 
     # Stock info
     stock_info = {"name": "Urban Company Limited"}
