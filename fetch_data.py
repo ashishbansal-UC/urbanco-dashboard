@@ -45,6 +45,8 @@ def fetch_ohlcv(ticker_symbol: str, period: str = "3mo") -> pd.DataFrame:
         print(f"  Warning: No data for {ticker_symbol}")
         return pd.DataFrame()
     df.index = df.index.tz_localize(None)
+    # Drop rows with NaN close (incomplete data from today/holidays)
+    df = df.dropna(subset=["Close"])
     return df
 
 
@@ -172,14 +174,16 @@ def compute_prices(df: pd.DataFrame) -> dict:
     if df.empty:
         return {"dates": [], "open": [], "high": [], "low": [], "close": [], "change_pct": []}
     df = df.copy()
+    # Drop rows where Close is NaN (incomplete/holiday data)
+    df = df.dropna(subset=["Close"])
     df["Change_Pct"] = df["Close"].pct_change() * 100
     return {
         "dates": df.index.strftime("%Y-%m-%d").tolist(),
-        "open": [round(v, 2) for v in df["Open"]],
-        "high": [round(v, 2) for v in df["High"]],
-        "low": [round(v, 2) for v in df["Low"]],
-        "close": [round(v, 2) for v in df["Close"]],
-        "change_pct": [round(v, 2) if pd.notna(v) else 0 for v in df["Change_Pct"]],
+        "open": [round(float(v), 2) if pd.notna(v) else 0 for v in df["Open"]],
+        "high": [round(float(v), 2) if pd.notna(v) else 0 for v in df["High"]],
+        "low": [round(float(v), 2) if pd.notna(v) else 0 for v in df["Low"]],
+        "close": [round(float(v), 2) for v in df["Close"]],
+        "change_pct": [round(float(v), 2) if pd.notna(v) else 0 for v in df["Change_Pct"]],
     }
 
 
