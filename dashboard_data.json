@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-26 05:41:36",
+  "last_updated": "2026-06-27 05:07:35",
   "stock_info": {
     "name": "Urban Company Limited",
     "sector": "Technology",
@@ -1237,6 +1237,11 @@
   ],
   "intimations": [
     {
+      "date": "26-Jun-2026 20:27:14",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "category": "Urban Company Limited has informed the Exchange about Schedule of Analyst/ Investor Meeting to be held on June 30, 2026"
+    },
+    {
       "date": "22-Jun-2026 11:11:02",
       "subject": "Disclosure under SEBI Takeover Regulations",
       "category": "Urban Company Limited has Submitted to the Exchange a copy of Disclosure under Regulation 31(4) of the Securities and Exchange Board of India (Substantial Acquisition of Shares and Takeovers) Regulations, 2011."
@@ -1330,11 +1335,6 @@
       "date": "08-May-2026 16:54:31",
       "subject": "Change in Auditors",
       "category": "Urban Company Limited has informed the Exchange regarding Change in Auditors of the company."
-    },
-    {
-      "date": "08-May-2026 15:37:45",
-      "subject": "General Updates",
-      "category": "Urban Company Limited has informed the Exchange about Shareholders  Letter dated May 08, 2026"
     }
   ],
   "peer_performance": [
@@ -1438,7 +1438,7 @@
       "name": "Pinelabs",
       "ticker": "PINELABS.NS",
       "price": 160.1,
-      "mcap": 1.8,
+      "mcap": 1.9,
       "1d": -0.7,
       "1w": 6.8,
       "30d": 16.0,
