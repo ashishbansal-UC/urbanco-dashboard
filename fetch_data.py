@@ -34,6 +34,10 @@ PEERS = {
     "Lenskart":       "LENSKART.NS",
     "Physics Wallah": "PWL.NS",
     "Blackbuck":      "BLACKBUCK.NS",
+    "Shadowfax":      "SHADOWFAX.NS",
+    "Nykaa":          "NYKAA.NS",
+    "Delhivery":      "DELHIVERY.NS",
+    "Infoedge":       "NAUKRI.NS",
     "Pinelabs":       "PINELABS.NS",
 }
 
