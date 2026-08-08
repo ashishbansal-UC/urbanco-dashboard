@@ -39,6 +39,7 @@ PEERS = {
     "Delhivery":      "DELHIVERY.NS",
     "Infoedge":       "NAUKRI.NS",
     "Pinelabs":       "PINELABS.NS",
+    "Ather":          "ATHERENERG.NS",
 }
 
 
