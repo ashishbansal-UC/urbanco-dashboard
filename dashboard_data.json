@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-27 11:38:29",
+  "last_updated": "2026-08-27 15:22:51",
   "stock_info": {
     "name": "Urban Company Limited",
     "sector": "Technology",
@@ -1333,6 +1333,11 @@
   ],
   "intimations": [
     {
+      "date": "27-Aug-2026 17:34:39",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "category": "Urban Company Limited has informed the Exchange about Schedule of Analyst/ Investor Meetings to be held on September 03, 2026"
+    },
+    {
       "date": "26-Aug-2026 18:48:31",
       "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
       "category": "Urban Company Limited has informed the Exchange about Schedule of Analyst/ Investor Meeting to be held between August 31, 2026 to September 01, 2026"
@@ -1426,11 +1431,6 @@
       "date": "31-Jul-2026 20:14:20",
       "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
       "category": "Urban Company Limited has informed the Exchange about Link of the Audio recording for the Earnings Call conducted today July 31, 2026"
-    },
-    {
-      "date": "31-Jul-2026 20:08:21",
-      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
-      "category": "Urban Company Limited has informed the Exchange about Schedule of Analysts / Investors Meetings to be held on August 05 2026 and August 11, 2026"
     }
   ],
   "peer_performance": [
@@ -1594,7 +1594,7 @@
       "name": "Ather",
       "ticker": "ATHERENERG.NS",
       "price": 1495.3,
-      "mcap": 5.9,
+      "mcap": 6.0,
       "1d": 0.0,
       "1w": 3.2,
       "30d": 24.4,
