@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-30 10:57:43",
+  "last_updated": "2026-10-31 07:11:27",
   "stock_info": {
     "name": "Urban Company Limited",
     "sector": "Technology",
@@ -140,7 +140,7 @@
       6177019,
       3697238,
       3906062,
-      14307000
+      12039558
     ],
     "nse_daily": [
       1001382,
@@ -206,7 +206,7 @@
       5900363,
       3400095,
       3742966,
-      12038245
+      12039558
     ],
     "bse_daily": [
       63733,
@@ -272,7 +272,7 @@
       276656,
       297143,
       163096,
-      2268755
+      0
     ],
     "weekly_avg": [
       1065115,
@@ -338,7 +338,7 @@
       7201695,
       6431453,
       6094590,
-      6283161
+      5829672
     ],
     "monthly_avg": [
       1065115,
@@ -404,7 +404,7 @@
       6554773,
       6522805,
       6599955,
-      7000002
+      6896936
     ],
     "deli_vol_daily": [
       624157,
@@ -470,7 +470,7 @@
       3193519,
       2040875,
       2136616,
-      6152010
+      5177010
     ],
     "deli_vol_weekly_avg": [
       624157,
@@ -536,7 +536,7 @@
       3559505,
       3200758,
       3041091,
-      3074066
+      2879066
     ],
     "deli_vol_monthly_avg": [
       624157,
@@ -602,7 +602,7 @@
       2877746,
       2862300,
       2902091,
-      3049334
+      3005016
     ],
     "deli_pct_daily": [
       58.6,
@@ -1277,6 +1277,11 @@
   ],
   "intimations": [
     {
+      "date": "31-Oct-2026 09:32:22",
+      "subject": "ESOP/ESOS/ESPS",
+      "category": "Urban Company Limited has informed the Exchange regarding Grant of 534000  stock options under the Employee Stock Option Scheme, 2015"
+    },
+    {
       "date": "23-Oct-2026 20:35:40",
       "subject": "Investor Presentation",
       "category": "Urban Company Limited has informed the Exchange about Investor Presentation"
@@ -1370,11 +1375,6 @@
       "date": "21-Sep-2026 09:12:57",
       "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
       "category": "Urban Company Limited has informed the Exchange about Schedule of Analyst/ Investor Meeting to be held on September 21, 2026"
-    },
-    {
-      "date": "18-Sep-2026 17:18:31",
-      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
-      "category": "Urban Company Limited has informed the Exchange about Schedule of Analyst/ Investor Meeting to be held on September 22, 2026"
     }
   ],
   "peer_performance": [
@@ -1429,13 +1429,13 @@
     {
       "name": "Groww",
       "ticker": "GROWW.NS",
-      "price": 191.5,
+      "price": 191.1,
       "mcap": 11.9,
-      "1d": 0.2,
-      "1w": 5.5,
-      "30d": 4.4,
-      "90d": -0.4,
-      "180d": -10.3,
+      "1d": 0.4,
+      "1w": 2.2,
+      "30d": 2.2,
+      "90d": -1.3,
+      "180d": -13.1,
       "365d": null
     },
     {
@@ -1465,14 +1465,14 @@
     {
       "name": "Blackbuck",
       "ticker": "BLACKBUCK.NS",
-      "price": 564.0,
+      "price": 566.4,
       "mcap": 1.0,
-      "1d": -0.4,
-      "1w": 3.8,
-      "30d": -6.2,
-      "90d": 3.6,
-      "180d": 2.3,
-      "365d": -18.2
+      "1d": -1.0,
+      "1w": 1.9,
+      "30d": -5.4,
+      "90d": 8.2,
+      "180d": -2.6,
+      "365d": -22.8
     },
     {
       "name": "Shadowfax",
